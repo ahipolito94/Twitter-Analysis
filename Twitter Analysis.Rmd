@@ -1,0 +1,97 @@
+---
+title: "Twitter Analysis"
+output:
+  html_document:
+    toc: TRUE
+---
+
+
+--- I. SETUP TWITTER API ---
+
+```{r}
+library(twitteR) # twitter package
+library(tm)      # text cleaning and mining package
+
+# twitter credentials
+setup_twitter_oauth('', 
+                    '',
+                    '',
+                    '')
+```
+
+--- II. COLLECT TWEETS ---
+
+```{r}
+# search for tweets, twitteR function: searchTwitter()
+iphone <- searchTwitter("iphonex OR iphone10 OR #iphonex OR iphone10", n=100, lang="en", since="2017-11-03")
+
+# convert tweets to dataframe, twitteR function: twListToDF()
+iphone_df <- twListToDF(iphone)
+
+# view dataframe
+head(iphone_df, n=5)
+```
+
+--- III. CLEAN TWEETS ---
+
+```{r}
+# create corpus and specify source, tm function: Corpus(VectorSource())
+iphone_corpus <- Corpus(VectorSource(iphone_df$text))
+
+# remove URLs
+removeURL <- function(x) gsub("http[^[:space:]]*", "", x)
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(removeURL))
+
+# remove everything except English letters and space
+removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*", "", x)
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(removeNumPunct))
+
+# convert to lower case
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(tolower))
+
+# remove stopwords
+myStopwords <- c(setdiff(stopwords('english'), c("r", "big")),
+                 "use", "see", "used", "via", "amp")
+iphone_corpus <- tm_map(iphone_corpus, removeWords, myStopwords)
+
+# remove extra whitespace
+iphone_corpus <- tm_map(iphone_corpus, stripWhitespace)
+
+iphone_corpus
+```
+
+--- IV. CREATE TERM DOCUMENT MATRIX ---
+
+```{r}
+# convert to term-document matrix, tm function: TermDocumentMatrix()
+tdm <- TermDocumentMatrix(iphone_corpus,
+                          control = list(wordLengths = c(1, Inf)))
+
+tdm
+```
+
+--- V. VISUALIZE FREQUENT TERMS ---
+
+```{r}
+# sum frequent words
+freq_terms <- rowSums(as.matrix(tdm))
+freq_terms <- subset(freq_terms, freq_terms >= 10)
+
+# convert to dataframe
+freq_df <- data.frame(term=names(freq_terms), freq=freq_terms)
+
+# plot frequency
+library(ggplot2)
+ggplot(freq_df, aes(x=reorder(term, freq), y=freq)) + 
+  geom_bar(stat="identity") + 
+  xlab("Terms") + 
+  ylab("Count") +
+  coord_flip()
+```
+
+
+
+Add chunk *Cmd+Option+I*
+Run chunk *Cmd+Shift+Enter*
+
+
