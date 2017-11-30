@@ -1,0 +1,98 @@
+
+--- I. SETUP TWITTER API ---
+
+```{r}
+library(twitteR) # twitter package
+library(tm)      # text cleaning and mining package
+
+# twitter credentials
+setup_twitter_oauth('ptvRakfz60tOZTu8EHF5ga9Qa', 
+                    'DPru6ywvxXBnTFA56EnEVT4A6N6MO8ZaGXVSbn2acowB7tpHTe',
+                    '3560060536-7bcx89YFtFxxr5A4X8rpEdj1jq8EmIyXx05VdxR',
+                    'Z62vuu5S2pHJIxVG7jot9b8jJEmCNcyUBBt1t5KQjMFpr')
+```
+
+--- II. COLLECT TWEETS ---
+
+```{r}
+# search for tweets, twitteR function: searchTwitter()
+iphone <- searchTwitter("iphonex OR iphone10 OR #iphonex OR iphone10", n=100, lang="en", since="2017-11-03")
+
+# convert tweets to dataframe, twitteR function: twListToDF()
+iphone.df <- twListToDF(iphone)
+
+# view entire dataframe
+iphone.df
+```
+
+--- III. CLEAN TWEETS ---
+
+```{r}
+# create corpus and specify source, tm function: Corpus(VectorSource())
+iphone_corpus <- Corpus(VectorSource(iphone.df$text))
+
+# remove URLs
+removeURL <- function(x) gsub("http[^[:space:]]*", "", x)
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(removeURL))
+
+# remove everything except English letters and space
+removeNumPunct <- function(x) gsub("[^[:alpha:][:space:]]*", "", x)
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(removeNumPunct))
+
+# convert to lower case
+iphone_corpus <- tm_map(iphone_corpus, content_transformer(tolower))
+
+# remove stopwords
+myStopwords <- c(setdiff(stopwords('english'), c("r", "big")),
+                 "use", "see", "used", "via", "amp")
+iphone_corpus <- tm_map(iphone_corpus, removeWords, myStopwords)
+
+# remove extra whitespace
+iphone_corpus <- tm_map(iphone_corpus, stripWhitespace)
+
+iphone_corpus
+```
+
+--- IV. CREATE TERM DOCUMENT MATRIX ---
+
+```{r}
+# convert to term-document matrix, tm function: TermDocumentMatrix()
+tdm <- TermDocumentMatrix(iphone_corpus,
+                          control = list(wordLengths = c(1, Inf)))
+
+tdm
+```
+
+--- V. VISUALIZE FREQUENT TERMS ---
+
+```{r}
+# sum frequent words
+freq_terms <- rowSums(as.matrix(tdm))
+freq_terms <- subset(freq_terms, freq_terms >= 10)
+
+# convert to dataframe
+freq.df <- data.frame(term=names(freq_terms), freq=freq_terms)
+
+View(freq_terms)
+View(freq.df)
+
+# plot frequency
+library(ggplot2)
+ggplot(freq.df, aes(x=reorder(term, freq), y=freq)) + 
+  geom_bar(stat="identity") + 
+  xlab("Terms") + 
+  ylab("Count") +
+  coord_flip()
+```
+
+
+
+Add chunk *Cmd+Option+I*
+
+Run chunk *Cmd+Shift+Enter*
+
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
