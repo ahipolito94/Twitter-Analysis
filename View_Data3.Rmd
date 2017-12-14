@@ -1,0 +1,183 @@
+---
+title: "Capstone 2 Notebook"
+output: html_notebook
+---
+
+# ---------- READ CSV FILE ----------
+
+```{r}
+
+iphonex_df <- read.csv("/Users/ahipolito94/Capstone_2/Data/iphonex.csv", header = TRUE, encoding = "UCS-2LE")
+galaxys8_df <- read.csv("/Users/ahipolito94/Capstone_2/Data/galaxys8.csv", header = TRUE, encoding = "UCS-2LE")
+pixel2xl_df <- read.csv("/Users/ahipolito94/Capstone_2/Data/pixel2xl.csv", header = TRUE, encoding = "UCS-2LE")
+oneplus_df <- read.csv("/Users/ahipolito94/Capstone_2/Data/oneplus.csv", header = TRUE, encoding = "UCS-2LE")
+
+```
+
+# ---------- INSEPCT DATA ----------
+
+```{r}
+
+dim(iphonex_df)
+dim(galaxys8_df)
+dim(pixel2xl_df)
+dim(oneplus_df)
+
+```
+
+# ---------- CLEAN DATA ----------
+
+```{r}
+
+library(tm)         # text mining package
+library(stringr)    # string operations package
+
+remove_dups <- function(x)    # function that removes duplicates
+{
+  x <- x[!duplicated(x), ]          # remove duplicates
+#  x <- subset(x, isRetweet!=TRUE)   # remove retweets
+  return(x)
+}
+
+clean_corpus <- function(x)   # function that inputs a file, x, and returns a clean corpus, x_corpus
+{
+  x_text <- x$text  # create variable of just the text of tweets
+  x_clean <- str_replace_all(x_text,"@[a-z,A-Z,_]*","")   # remove "@username" from tweets using stringr function
+  x_corpus <- Corpus(VectorSource(x_clean))  # create corpus using tm function
+  x_corpus <- tm_map(x_corpus, tolower)  # transform to lowercase
+  x_corpus <- tm_map(x_corpus, removePunctuation)  # remove punctuations
+  x_corpus <- tm_map(x_corpus, removeNumbers)  # remove numbers
+  x_corpus <- tm_map(x_corpus, removeWords, stopwords("english"))
+  x_corpus <- tm_map(x_corpus, removeWords, c("twitter", "href", "via", "amp", "rt", "retweet", "iphone", "iphonex", "apple"))
+  x_corpus <- tm_map(x_corpus, stripWhitespace)  # remove extra white space
+  removeURL <- function(x) gsub("http[^[:space:]]*", "", x)  # remove URLs
+  x_corpus <- tm_map(x_corpus, content_transformer(removeURL))
+  
+  return(x_corpus)
+}
+
+```
+
+# ---------- CREATE DOCUMENT TERM MATRIX ----------
+
+```{r}
+
+create_dtm <- function(x)    # function that inputs a corpus, x, and returns a text document matrix, x_dtm
+{
+  x_dtm <- DocumentTermMatrix(x, control = list(wordLengths = c(1, Inf)))
+  
+  return(x_dtm)
+}
+
+```
+
+# ---------- VISUALIZE FREQUENT TERMS ----------
+
+```{r}
+
+library(ggplot2)
+
+plot_freq_terms <- function(x)    # function that plots frequent terms
+{
+  # sum frequent words
+  x_freq_terms <- colSums(as.matrix(x))
+  x_freq_terms <- subset(x_freq_terms, x_freq_terms >= 200)
+  
+  # convert to dataframe
+  x_freq_df <- data.frame(term=names(x_freq_terms), freq=x_freq_terms)
+  
+  x_plot <- ggplot(x_freq_df, aes(x=reorder(term, freq), y=freq)) + 
+    geom_bar(stat="identity") + 
+    xlab("Terms") + 
+    ylab("Count") +
+    coord_flip()
+  
+  return(x_plot)
+}
+
+```
+
+# ---------- TOPIC MODELING ----------
+
+```{r}
+
+library(tidytext)  # tidies text, complements text mining package   
+library(dplyr)     # dataset manipulation package
+
+lda_topics <- function(x)   # function that inputs a document term matrix, x, and returns lda topics with probabilities, x_topics
+{
+  rowTotals <- apply(x , 1, sum)    # sum of words in each document
+  x_dtm_new <- x[rowTotals > 0, ]    # remove all documents without words
+  x_dtm_new    # check number of documents after removing documents without words
+  
+  x_lda <- LDA(x_dtm_new, k = 5)    # find 5 topics
+  x_topics <- tidy(x_lda, matrix = "beta")   # extracts per-topic-per-word probabilities
+  
+  return(x_topics)
+
+}
+
+plot_top_terms <- function(x)    # function that plots top terms, input: topics, output: plot
+{
+  x_top_terms <- x %>%
+    group_by(topic) %>%
+    top_n(10, beta) %>%
+    ungroup() %>%
+    arrange(topic, -beta)
+  
+  x_plot <- x_top_terms %>%
+    mutate(term = reorder(term, beta)) %>%
+    ggplot(aes(term, beta, fill = factor(topic))) +
+    geom_col(show.legend = FALSE) +
+    facet_wrap(~ topic, scales = "free") +
+    coord_flip()
+  
+  return(x_plot)
+}
+
+```
+
+# ---------- APPLY FUNCTIONS - IPHONE X ----------
+
+```{r}
+# CLEAN DATA
+iphonex_df <- remove_dups(iphonex_df)
+dim(iphonex_df)   # check dimension after removing duplicates
+
+iphonex_corpus <- clean_corpus(iphonex_df)
+#View(iphonex_corpus)
+#summary(iphonex_corpus)
+
+```
+
+
+```{r}
+
+# CREATE DOCUMENT TERM MATRIX
+iphonex_dtm <- create_dtm(iphonex_corpus)
+iphonex_dtm
+
+```
+
+
+```{r}
+
+# VISUALIZE FREQUENT TERMS
+plot_freq_terms(iphonex_dtm)
+
+```
+
+
+```{r}
+
+# TOPIC MODELING
+iphonex_topics <- lda_topics(iphonex_dtm)
+iphonex_topics
+plot_top_terms(iphonex_topics)
+
+```
+
+
+Add chunk *Cmd+Option+I*
+Run chunk *Cmd+Shift+Enter*
+
