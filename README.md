@@ -13,4 +13,20 @@ This repository is intended for the comparison (using sentiment analysis and top
 
 ## Topic Modeling
 
-<script src="https://gist.github.com/ahipolito94/a52686c4ca42909a43a1dbac744689aa.js"></script>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>LDAvis</title>
+    <script src="d3.v3.js"></script>
+    <script src="ldavis.js"></script>
+    <link rel="stylesheet" type="text/css" href="lda.css">
+  </head>
+
+  <body>
+    <div id = "lda"></div>
+    <script>
+      var vis = new LDAvis("#lda", "lda.json");
+    </script>
+  </body>
+
+</html>
