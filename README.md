@@ -1,5 +1,3 @@
-# Twitter: iPhone X vs. Samsung Galaxy S8
-
 ## Project Overview
 
 This repository is intended for the comparison (using sentiment analysis and topic modeling) of the iPhone X and Samsung Galaxy S8 using Twitter data.
