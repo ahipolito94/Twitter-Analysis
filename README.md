@@ -1,3 +1,18 @@
+# Twitter: iPhone X vs. Samsung Galaxy S8
+
+## Project Overview
+
+This repository is intended for the comparison (using sentiment analysis and topic modeling) of the iPhone X and Samsung Galaxy S8 using Twitter data.
+
+- Which phone has the most positive response?
+- What are some of the most talked about things about each phone?
+
+## Key Concepts
+
+- Data Collection
+- Sentiment Analysis
+- Topic Modeling (LDA)
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/ahipolito94/Twitter-Analysis/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
