@@ -10,3 +10,5 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Data Collection
 - Sentiment Analysis
 - Topic Modeling (LDA)
+
+{% gist a52686c4ca42909a43a1dbac744689aa %}
