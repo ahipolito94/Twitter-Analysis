@@ -74,6 +74,18 @@ Before and after cleaning the data.
   <img src="Pics/iphonex2.png" width="300"/>
 </p>
 
+### 2. Sentiment Analysis
+
+#### 2.1 Frequency plots
+
+My primary analysis looks at the most frequently used terms in the tweets.
+
+<p align="center">
+  <img src="Pics/iphonexfreq.png" width="300"/>
+  <img src="Pics/galaxyfreq.png" width="300"/>
+</p>
+
+
 
 ---
 
