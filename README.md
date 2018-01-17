@@ -1,8 +1,8 @@
 ## Project Overview
 
-This repository is intended for the comparison (using sentiment analysis and topic modeling) of the iPhone X and Samsung Galaxy S8 using tweets.
+This repository is intended for the comparison of the iPhone X and Samsung Galaxy S8 using tweets.
 
-- Which phone has the most positive response?
+- Which phone has the most positive response from twitter users?
 - What are some of the most talked about things about each phone?
 
 ## Key Concepts
