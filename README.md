@@ -13,16 +13,16 @@ This repository is intended for the comparison of the iPhone X and Samsung Galax
 
 ---
 
-### 1. Data Wrangling
+#### 1. Data Wrangling
 
-#### 1.1 Dataset
+##### 1.1 Dataset
 
 | Phone              | # Raw Tweets  | # Cleaned Tweets  | # Removed Tweets |
 | ------------------ |:-----------:|:---------------:|:--------------:|
 | iPhone X           | 135,230     |   31,153        | 104,077        |
 | Samsung Galaxy S8  | 144,124     |   34,193        | 109,931        |
 
-#### 1.2 Getting the data
+##### 1.2 Getting the data
 
 Using Twitter's Search API, I wrote a simple script on R to collect tweets about each phone. Here's an example of how to get tweets about the iPhone X and to store it as a CSV file. A step-by-step explanation on how to collect tweets using the Search API can be found [here](https://medium.com/@ahipolito94/collecting-twitter-data-using-r-cd6cd062dca4).
 
@@ -47,7 +47,7 @@ Using Twitter's Search API, I wrote a simple script on R to collect tweets about
     # ---------- WRITE/APPEND TO CSV FILE ---------- 
     write.table(iphonex, "/Users/ahipolito94/Capstone_2/Data/iphonex.csv", append=T, row.names=F, col.names=T,  sep=",")
 
-#### 1.3 Cleaning the data
+##### 1.3 Cleaning the data
 
 I performed a bunch of pre-processing to clean the tweets.
 
@@ -74,9 +74,9 @@ Before and after cleaning the data.
   <img src="Pics/iphonex2.png" width="300"/>
 </p>
 
-### 2. Sentiment Analysis
+#### 2. Sentiment Analysis
 
-#### 2.1 Frequency plots
+##### 2.1 Frequency plots
 
 My primary analysis looks at the most frequently used terms in the tweets.
 
@@ -85,7 +85,7 @@ My primary analysis looks at the most frequently used terms in the tweets.
   <img src="Pics/galaxyfreq.png" width="305"/>
 </p>
 
-#### 2.2 Sentiment plots
+##### 2.2 Sentiment plots
 
 Next, I use a simple text sentiment scoring function for each phone. This function sums the number of positive and negative words in each tweet. I use a list of positive and negative opinion words put together by [researchers from the University of Illinois at Chicago](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html).
 
