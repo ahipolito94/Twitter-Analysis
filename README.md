@@ -17,7 +17,7 @@ This repository is intended for the comparison (using sentiment analysis and top
 
 #### 1.1 Dataset
 
-| Phone              | # Raw Data  | # Cleaned Data  | # Removed Data |
+| Phone              | # Raw Tweets  | # Cleaned Tweets  | # Removed Tweets |
 | ------------------ |:-----------:|:---------------:|:--------------:|
 | iPhone X           | 135,230     |   31,153        | 104,077        |
 | Samsung Galaxy S8  | 144,124     |   34,193        | 109,931        |
