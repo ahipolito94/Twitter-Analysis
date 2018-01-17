@@ -85,7 +85,28 @@ My primary analysis looks at the most frequently used terms in the tweets.
   <img src="Pics/galaxyfreq.png" width="305"/>
 </p>
 
+#### 2.2 Sentiment plots
 
+Next, I use a simple text sentiment scoring function for each phone. This function sums the number of positive and negative words in each tweet. I use a list of positive and negative opinion words put together by [researchers from the University of Illinois at Chicago](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html).
+
+
+    sentimentScore <- function(text, pos.words, neg.words) {  
+      
+      words <- strsplit(text, '\\s+')           # splits the text into a vector of words
+      words <- unlist(words)   
+      
+      pos.matches <- match(words, pos.words)    # find which words are positive
+      pos.matches <- !is.na(pos.matches)        
+      neg.matches <- match(words, neg.words)    # find which words are negative
+      neg.matches <- !is.na(neg.matches)   
+      
+      p <- sum(pos.matches)                     # calculates the sentiment score
+      n <- sum(neg.matches)
+      if (p == 0 & n == 0)
+        return (NA)
+      else
+        return (p - n)
+    }
 
 ---
 
