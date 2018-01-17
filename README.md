@@ -11,22 +11,20 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Sentiment Analysis
 - Topic Modeling (LDA)
 
-<!-- Override Gist styling -->
-<style type="text/css">
-  iframe{background-color: #0a0a0a;}
-  div.gist-syntax {background-color:#0a0a0a!important;}
-  div.gist {color:#ccc!important;}
-  span.nt, span.kd, span.k, span.o{color:aliceblue!important;}
-  .gist .gist-file{border-color:#444!important;}
-  .gist .gist-file .gist-meta{background-color:#0a0a0a!important;}
-</style>
-  
-<!-- Embed Gist result from Rawgit -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>LDAvis</title>
+    <script src="d3.v3.js"></script>
+    <script src="ldavis.js"></script>
+    <link rel="stylesheet" type="text/css" href="lda.css">
+  </head>
 
-<iframe src="https://cdn.rawgit.com/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/index.html" style="background-color: #0a0a0a;" width="400"></iframe>
+  <body>
+    <div id = "lda"></div>
+    <script>
+      var vis = new LDAvis("#lda", "lda.json");
+    </script>
+  </body>
 
-
-<!-- Embed Gist -->
-
-<script src="https://gist.github.com/ahipolito94/a52686c4ca42909a43a1dbac744689aa.js"></script>
-
+</html>
