@@ -10,3 +10,11 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Data Collection
 - Sentiment Analysis
 - Topic Modeling (LDA)
+
+<html>
+  <head>
+    
+<iframe src="https://bl.ocks.org/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/#topic=1&lambda=1&term=" width="100%" height="340" seamless frameBorder="0" scrolling="no"></iframe>
+
+  </head>
+</html>
