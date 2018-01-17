@@ -81,8 +81,8 @@ Before and after cleaning the data.
 My primary analysis looks at the most frequently used terms in the tweets.
 
 <p align="center">
-  <img src="Pics/iphonexfreq.png" width="300"/>
-  <img src="Pics/galaxyfreq.png" width="300"/>
+  <img src="Pics/iphonexfreq.png" width="305"/>
+  <img src="Pics/galaxyfreq.png" width="305"/>
 </p>
 
 
