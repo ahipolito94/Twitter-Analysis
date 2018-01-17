@@ -11,7 +11,9 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Sentiment Analysis
 - Topic Modeling (LDA)
 
-### Part 1 - Data Wrangling
+---
+
+## Part 1 - Data Wrangling
 
 #### Dataset
 
