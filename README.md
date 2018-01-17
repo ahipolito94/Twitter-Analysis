@@ -13,7 +13,7 @@ This repository is intended for the comparison (using sentiment analysis and top
 
 ---
 
-## 1. Data Wrangling
+### 1. Data Wrangling
 
 #### 1.1 Dataset
 
@@ -70,8 +70,8 @@ I performed a bunch of pre-processing to clean the tweets.
 Before and after cleaning the data.
 
 <p align="center">
-  <img src="Pics/iphonex1.png" width="250"/>
-  <img src="Pics/iphonex2.png" width="250"/>
+  <img src="Pics/iphonex1.png" width="300"/>
+  <img src="Pics/iphonex2.png" width="300"/>
 </p>
 
 
