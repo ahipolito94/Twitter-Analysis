@@ -69,7 +69,10 @@ I performed a bunch of pre-processing to clean the tweets.
 
 Before and after cleaning the data.
 
-![Before](Pics/iphonex1.png "Before")  ![After](Pics/iphonex2.png "After") 
+<p align="center">
+  <img src="Pics/iphonex1.png" width="350"/>
+  <img src="Pics/iphonex2.png" width="350"/>
+</p>
 
 
 ---
