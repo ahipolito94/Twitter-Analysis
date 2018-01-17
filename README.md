@@ -47,7 +47,27 @@ Using Twitter's Search API, I wrote a simple script on R to collect tweets about
     # ---------- WRITE/APPEND TO CSV FILE ---------- 
     write.table(iphonex, "/Users/ahipolito94/Capstone_2/Data/iphonex.csv", append=T, row.names=F, col.names=T,  sep=",")
 
-#### 1.3 Before and After Data Wrangling
+#### 1.3 Cleaning the data
+
+I performed a bunch of pre-processing to clean the tweets.
+
+    library(stringr)
+    
+    df_tweets <- df$text                                                    # variable of just the text of tweets
+    clean_tweets <- str_replace_all(df_tweets,"@[a-z,A-Z,0-9,_]*","")       # remove "@username" from tweets using stringr function
+    clean_tweets <- str_replace_all(clean_tweets, "[^[:alnum:]]", " ")      # remove non-characters
+    clean_tweets <- gsub('\\b\\w{1,2}\\s','', clean_tweets)                 # remove words less than 3 characters
+    clean_tweets <- gsub("http.+ |http.+$", " ", clean_tweets)              # remove links
+
+    clean_tweets <- gsub("'", "", clean_tweets)  # remove apostrophes
+    clean_tweets <- gsub("[[:punct:]]", " ", clean_tweets)                  # replace punctuation with space
+    clean_tweets <- gsub("[[:cntrl:]]", " ", clean_tweets)                  # replace control characters with space
+    clean_tweets <- gsub("^[[:space:]]+", "", clean_tweets)                 # remove whitespace at beginning of documents
+    clean_tweets <- gsub("[[:space:]]+$", "", clean_tweets)                 # remove whitespace at end of documents
+    clean_tweets <- tolower(clean_tweets)                                   # force to lowercase
+    clean_tweets <- gsub("[[:digit:]]", "", clean_tweets)                   # remove numbers
+
+Before and after cleaning the data.
 
 ![Before](Pics/iphonex1.png "Before")  ![After](Pics/iphonex2.png "After") 
 
