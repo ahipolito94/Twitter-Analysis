@@ -11,9 +11,3 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Sentiment Analysis
 - Topic Modeling (LDA)
 
-
-
----
-
-
-<script type="text/javascript" src="Topic-Modeling/iphone.js"></script>
