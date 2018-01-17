@@ -108,6 +108,12 @@ Next, I use a simple text sentiment scoring function for each phone. This functi
         return (p - n)
     }
 
+The histogram compares the sentiment scores of each phone. The x-axis is the number of negative words (left of the 0 tick mark) and the number of positive words (right of the 0 tick mark) in a tweet. The iPhone X has much more tweets (well above 4000 tweets) that has two or more negative words per tweet. 
+
+<p align="center">
+  <img src="Pics/sentiment.png" width="450"/>
+</p>
+
 ---
 
 Topic Modeling 
