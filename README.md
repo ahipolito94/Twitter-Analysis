@@ -47,8 +47,14 @@ Using Twitter's Search API, I wrote a simple script on R to collect tweets about
     # ---------- WRITE/APPEND TO CSV FILE ---------- 
     write.table(iphonex, "/Users/ahipolito94/Capstone_2/Data/iphonex.csv", append=T, row.names=F, col.names=T,  sep=",")
 
+#### 1.3 Before and After Data Wrangling
+
+![Before](Pics/iphonex1.png "Before")  ![After](Pics/iphonex2.png "After") 
+
 
 ---
+
+Topic Modeling 
 
 <div class="index-pop">
     <a target="_blank" title="Open Block a52686c4ca42909a43a1dbac744689aa a new window." href="https://bl.ocks.org/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/236da2e30a37b92a454a75e8ed213ec88cb7bd8a/">iPhone X Topics<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
