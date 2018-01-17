@@ -70,8 +70,8 @@ I performed a bunch of pre-processing to clean the tweets.
 Before and after cleaning the data.
 
 <p align="center">
-  <img src="Pics/iphonex1.png" width="350"/>
-  <img src="Pics/iphonex2.png" width="350"/>
+  <img src="Pics/iphonex1.png" width="250"/>
+  <img src="Pics/iphonex2.png" width="250"/>
 </p>
 
 
