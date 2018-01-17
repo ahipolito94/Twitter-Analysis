@@ -12,5 +12,13 @@ This repository is intended for the comparison (using sentiment analysis and top
 - Topic Modeling (LDA)
 
   
-<iframe src="http://bl.ocks.org/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+  
+<!-- Embed Gist result from Rawgit -->
+
+<iframe frameborder="0" height="100" marginheight="0" marginwidth="0" scrolling="no" src="https://cdn.rawgit.com/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/index.html" style="background-color: #0a0a0a;" width="400"></iframe>
+
+
+<!-- Embed Gist -->
+
+<script src="https://gist.github.com/ahipolito94/a52686c4ca42909a43a1dbac744689aa.js"></script>
 
