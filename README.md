@@ -129,14 +129,10 @@ Parameters
 - 
 -
 
-
-##### iPhone X Topics
-
 <div class="index-pop">
     <a target="_blank" title="Open Block a52686c4ca42909a43a1dbac744689aa a new window." href="https://bl.ocks.org/ahipolito94/raw/a52686c4ca42909a43a1dbac744689aa/236da2e30a37b92a454a75e8ed213ec88cb7bd8a/">iPhone X Topics<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
   </div>
   
-##### Samsung Galaxy S8 Topics
 
 <div class="index-pop">
     <a target="_blank" title="Open Block bd9349b0b7692c4f4417876234f59cd1 a new window." href="https://bl.ocks.org/ahipolito94/raw/bd9349b0b7692c4f4417876234f59cd1/">Samsung Galaxy S8 Topics<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
