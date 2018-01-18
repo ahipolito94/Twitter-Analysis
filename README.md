@@ -15,8 +15,8 @@ This repository is intended for the comparison of the iPhone X and Samsung Galax
 ```
 ├── README.md                <- README
 │
-├── Data                     <- raw data 
-│   ├── Get_Data.R      
-│   └── Code.R               <- TO-DO
+├── Data                     
+│   ├── Get_Data.R           <- Data Collection
+│   └── Code.R               <- TO-DO Data Wrangling
 │
 ```
