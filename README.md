@@ -12,11 +12,11 @@ This repository is intended for the comparison of the iPhone X and Samsung Galax
 - Topic Modeling (LDA)
 
 ## Structure
-
+```
 ├── README.md                <- README
 │
 ├── Data                     <- raw data 
 │   ├── Get_Data.R      
 │   └── Code.R               <- TO-DO
 │
-
+```
