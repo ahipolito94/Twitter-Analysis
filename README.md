@@ -17,7 +17,6 @@ This repository is intended for the comparison of the iPhone X and Samsung Galax
 │
 ├── Data                     
 │   ├── Get_Data.R           <- Data Collection
-│   └── Code.R               <- TO-DO Data Wrangling
 │
 ├── Code                     
 │   ├── galaxys8.R           <- Analysis of the Samsung Galaxy S8
