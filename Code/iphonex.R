@@ -35,11 +35,10 @@ term.table <- table(unlist(doc.list))
 term.table <- sort(term.table, decreasing = TRUE)
 
 # step 6: remove stopwords or words occurring less than 5 times
-stop_words <- c(stopwords("english"), "twitter", "href", "via", "amp", "rt", "retweet", "falsenanaa", 
-                "s","X", "x","iphone", "iphonex", "apple", "ios", "false" , "bd", "b", "c", "free", 
-                "new", "now", "giveaway", "phone", "fef", "d", "android", "galaxy", "hindustan", 
-                "samsung", "bc", "bitcoi", "don", "competition", "ends", "plus", "win", 
-                "get", "e", "twitter", "tweet")
+stop_words <- c(stopwords("english"), "twitter", "href", "via", "amp", "rt", "retweet", 
+                "s","X", "x","iphone", "iphonex", "apple", "ios", "false" , "free", 
+                "new", "now", "giveaway", "phone", "android", "galaxy", 
+                "samsung", "competition", "ends", "plus", "win", "get", "twitter", "tweet")
 del <- names(term.table) %in% stop_words | term.table < 5
 term.table <- term.table[!del]
 
